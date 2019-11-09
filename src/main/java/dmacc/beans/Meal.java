@@ -35,7 +35,6 @@ public class Meal {
 		super();
 		this.id = id;
 		this.mealName = mealName;
-
 	}
 	
 	public long getId() {
