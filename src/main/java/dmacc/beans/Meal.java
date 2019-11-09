@@ -1,9 +1,15 @@
 package dmacc.beans;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +22,10 @@ public class Meal {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String mealName;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	private List<User> user;
 
 	
 	public Meal() {
@@ -23,14 +33,13 @@ public class Meal {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//This would allow a user to create a meal without ingredients.
-	//Useful if the user wants to make a meal, but they're not sure what ingredients to use yet.
-	public Meal(int id, String mealName) {
+	public Meal(int id, String mealName, List<User> user) {
 		super();
 		this.id = id;
 		this.mealName = mealName;
+		this.user = user;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -46,10 +55,7 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return "Meal [id=" + id + ", mealName=" + mealName + "]";
-	}
-
-	
-	
+		return "Meal [id=" + id + ", mealName=" + mealName + ", user=" + user + "]";
+	}	
 	
 }
