@@ -32,7 +32,7 @@ public class WebController {
 	@PostMapping("/inputMeal")
 	public String addNewMeal(@ModelAttribute Meal m, Model model) {
 		repo.save(m);
-		model.addAttribute("mealPlanner", repo.findAll());
+		model.addAttribute("newMeal", repo.findAll());
 		return "results";
 	}
 }

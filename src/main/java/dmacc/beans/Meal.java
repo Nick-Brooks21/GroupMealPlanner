@@ -14,7 +14,7 @@ public class Meal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	private String mealName;
 
 	
@@ -25,16 +25,16 @@ public class Meal {
 	
 	//This would allow a user to create a meal without ingredients.
 	//Useful if the user wants to make a meal, but they're not sure what ingredients to use yet.
-	public Meal(long id, String mealName) {
+	public Meal(int id, String mealName) {
 		super();
 		this.id = id;
 		this.mealName = mealName;
 	}
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getMealName() {
