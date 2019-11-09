@@ -29,6 +29,8 @@ public class Meal {
 		this.ingredients = ingredients;
 	}
 	
+	//This would allow a user to create a meal without ingredients.
+	//Useful if the user wants to make a meal, but they're not sure what ingredients to use yet.
 	public Meal(long id, String mealName) {
 		super();
 		this.id = id;
