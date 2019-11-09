@@ -17,8 +17,9 @@ public class User {
 		super();
 	}
 	
-	public User(String userName) {
+	public User(long userid, String userName) {
 		super();
+		this.userid = userid;
 		this.userName = userName;
 	}
 
