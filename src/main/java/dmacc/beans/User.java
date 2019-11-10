@@ -5,32 +5,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.Table;
+
 @Entity
+@Table(name="user_table")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userid;
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private int userID;
+
 	private String userName;
 	
 	public User() {
 		super();
+
+		// TODO Auto-generated constructor stub
 	}
 	
-	public User(long userid, String userName) {
+	public User(int userID, String userName) {
 		super();
-		this.userid = userid;
+		this.userID = userID;
 		this.userName = userName;
 	}
-
-	public long getUserid() {
-		return userid;
+	
+	public int getUserID() {
+		return userID;
 	}
-
-	public void setUserid(long userid) {
-		this.userid = userid;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -41,10 +45,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", userName=" + userName + "]";
+
+		return "User [userID=" + userID + ", userName=" + userName + "]";
 	}
 	
-	
-	
-	
+
 }

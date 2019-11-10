@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Add a Meal</title>
+	</head>
+	<body>
+		<form th:object="${newMeal}" th:action="@{/inputMeal}" method='POST'>
+ 
+			Name of meal: <input name="mealName" size="30"> <br /> 
+			
+ 			<input name="submit" type="submit" value="submit" />
+         
+		</form>
+		<a href="viewAllMeals">View all Meals</a>
+	</body>
+</html>

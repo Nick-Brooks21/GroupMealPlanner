@@ -1,47 +1,49 @@
 package dmacc.beans;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
+@Table(name="meal_list")
 public class Meal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	private String mealName;
-	@Autowired
-	private Ingredients ingredients;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	private List<User> user;
+
 	
 	public Meal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Meal(long id, String mealName, Ingredients ingredients) {
+	public Meal(int id, String mealName, List<User> user) {
 		super();
 		this.id = id;
 		this.mealName = mealName;
-		this.ingredients = ingredients;
+		this.user = user;
 	}
-	
-	//This would allow a user to create a meal without ingredients.
-	//Useful if the user wants to make a meal, but they're not sure what ingredients to use yet.
-	public Meal(long id, String mealName) {
-		super();
-		this.id = id;
-		this.mealName = mealName;
 
-	}
-	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getMealName() {
@@ -50,18 +52,10 @@ public class Meal {
 	public void setMealName(String mealName) {
 		this.mealName = mealName;
 	}
-	public Ingredients getIngredients() {
-		return ingredients;
-	}
-	public void setIngredients(Ingredients ingredients) {
-		this.ingredients = ingredients;
-	}
 
 	@Override
 	public String toString() {
-		return "Meal [id=" + id + ", mealName=" + mealName + ", ingredients=" + ingredients + "]";
-	}
-	
-	
+		return "Meal [id=" + id + ", mealName=" + mealName + ", user=" + user + "]";
+	}	
 	
 }
