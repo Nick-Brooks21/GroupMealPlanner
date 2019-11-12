@@ -1,5 +1,6 @@
 package dmacc.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +14,10 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="user_ID")
 	private int userID;
 
+	@Column(name="user_name")
 	private String userName;
 	
 	public User() {

@@ -21,6 +21,7 @@ public class Meal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="meal_ID")
 	private int id;
 	@Column(name="name_of_meal")
 	private String mealName;
